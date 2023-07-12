@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tribetools-dev-185043-authRole",
+      "UnauthRoleArn": "arn:aws:iam::712043496150:role/amplify-tribetools-dev-185043-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::712043496150:role/amplify-tribetools-dev-185043-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-tribetools-dev-185043-deployment",
+      "UnauthRoleName": "amplify-tribetools-dev-185043-unauthRole",
+      "StackName": "amplify-tribetools-dev-185043",
+      "StackId": "arn:aws:cloudformation:us-east-1:712043496150:stack/amplify-tribetools-dev-185043/5f7a79a0-203d-11ee-8580-0e2f745cfe55",
+      "AmplifyAppId": "d1nq7aytgqy5n4"
+    },
+    "categories": {
+      "auth": {
+        "tribetools22cc6334": {}
+      }
+    }
+  }
+}
