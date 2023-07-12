@@ -2,6 +2,8 @@ import { useState } from 'react';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
+import { Authenticator } from '@aws-amplify/ui-react';
+
 // mocks_
 import account from '../../../_mock/account';
 
@@ -96,10 +98,14 @@ export default function AccountPopover() {
         </Stack>
 
         <Divider sx={{ borderStyle: 'dashed' }} />
-
-        <MenuItem onClick={handleClose} sx={{ m: 1 }}>
-          Logout
-        </MenuItem>
+        
+        <Authenticator >
+          {({signOut }) => (
+            <MenuItem onClick={signOut} sx={{ m: 1 }}>
+              Logout
+            </MenuItem>
+          )}
+        </Authenticator>
       </Popover>
     </>
   );
