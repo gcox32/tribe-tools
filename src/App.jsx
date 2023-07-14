@@ -1,8 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 // Amplify auth
-import {Amplify} from 'aws-amplify';
-import {withAuthenticator } from '@aws-amplify/ui-react';
+import { Amplify } from 'aws-amplify';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import awsconfig from './aws-exports';
 // import '@aws-amplify/ui-react/styles.css';
 // routes

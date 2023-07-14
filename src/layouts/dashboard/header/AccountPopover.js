@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
 import { Authenticator } from '@aws-amplify/ui-react';
-
+// hooks
+import { useUserData } from '../../../hooks/useUserData';
 // mocks_
 import account from '../../../_mock/account';
 
@@ -36,6 +37,8 @@ export default function AccountPopover() {
   const handleClose = () => {
     setOpen(null);
   };
+
+  const userData = useUserData();
 
   return (
     <>
@@ -80,10 +83,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle2" noWrap>
-            {account.displayName}
+            {userData.given_name} {userData.family_name}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
+            {userData.email}
           </Typography>
         </Box>
 
