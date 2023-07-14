@@ -13,7 +13,7 @@ import ThemeProvider from './theme';
 import { StyledChart } from './components/chart';
 import ScrollToTop from './components/scroll-to-top';
 // auth components
-import { Header } from "./pages/auth/Header";
+// import { Header } from "./pages/auth/Header";
 import { Footer } from "./pages/auth/Footer";
 import { SignInHeader } from "./pages/auth/SignInHeader";
 import { SignInFooter } from "./pages/auth/SignInFooter";
@@ -39,7 +39,6 @@ function App() {
 
 export default withAuthenticator(App, {
   components: {
-    Header,
     SignIn: {
       Header: SignInHeader,
       Footer: SignInFooter
