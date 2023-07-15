@@ -79,3 +79,7 @@
 .hover-default:hover {
   cursor: default;
 }
+/* calendar */
+ul li {
+  font-size: 12px;
+}
