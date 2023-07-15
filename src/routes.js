@@ -2,14 +2,16 @@ import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
 import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
+import ManagementLayout from './layouts/management';
 //
 import BlogPage from './pages/BlogPage';
 import UserPage from './pages/UserPage';
-import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import CalendarPage from './pages/CalendarPage';
+import ProfilePage from './pages/ProfilePage';
+import BillingPage from './pages/BillingPage';
 
 // ----------------------------------------------------------------------
 
@@ -20,7 +22,7 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
-        { path: 'schedule', element: <CalendarPage />},
+        { path: 'schedule', element: <CalendarPage /> },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
@@ -28,8 +30,13 @@ export default function Router() {
       ],
     },
     {
-      path: 'login',
-      element: <LoginPage />,
+      path: '/user',
+      element: <ManagementLayout />,
+      children: [
+        { element: <Navigate to="/user/profile" />, index: true },
+        { path: 'profile', element: <ProfilePage /> },
+        { path: 'billing', element: <BillingPage /> },
+      ],
     },
     {
       element: <SimpleLayout />,

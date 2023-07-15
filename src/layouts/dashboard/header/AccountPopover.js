@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
 import { Authenticator } from '@aws-amplify/ui-react';
-// hooks
 import { useUserData } from '../../../hooks/useUserData';
+// import popoverConfig from '..//popover/config';
+import NavSection from '../../../components/nav-section/NavSection';
+
 // mocks_
 import account from '../../../_mock/account';
 
@@ -12,16 +14,19 @@ import account from '../../../_mock/account';
 
 const MENU_OPTIONS = [
   {
-    label: 'Home',
-    icon: 'eva:home-fill',
+    title: 'Home',
+    // icon: 'eva:home-fill',
+    path: '/dashboard/app',
   },
   {
-    label: 'Profile',
-    icon: 'eva:person-fill',
+    title: 'Profile',
+    // icon: 'eva:person-fill',
+    path: '/user/profile',
   },
   {
-    label: 'Settings',
-    icon: 'eva:settings-2-fill',
+    title: 'Billing',
+    // icon: 'eva:settings-2-fill',
+    path: '/user/billing',
   },
 ];
 
@@ -40,6 +45,9 @@ export default function AccountPopover() {
 
   const userData = useUserData();
 
+  if (!userData) {
+    return <div>Error...</div>;
+  }
   return (
     <>
       <IconButton
@@ -85,25 +93,18 @@ export default function AccountPopover() {
           <Typography variant="subtitle2" noWrap>
             {userData.given_name} {userData.family_name}
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {userData.email}
-          </Typography>
         </Box>
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Stack sx={{ p: 1 }}>
-          {MENU_OPTIONS.map((option) => (
-            <MenuItem key={option.label} onClick={handleClose}>
-              {option.label}
-            </MenuItem>
-          ))}
+          <NavSection data={MENU_OPTIONS} />
         </Stack>
 
         <Divider sx={{ borderStyle: 'dashed' }} />
-        
+
         <Authenticator >
-          {({signOut }) => (
+          {({ signOut }) => (
             <MenuItem onClick={signOut} sx={{ m: 1 }}>
               Logout
             </MenuItem>

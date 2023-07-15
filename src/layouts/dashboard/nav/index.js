@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 // @mui
 import { styled, alpha } from '@mui/material/styles';
-import { Box, Link, Drawer, Typography, Avatar } from '@mui/material';
+import { Box, Link, Button, Drawer, Typography, Avatar, Stack } from '@mui/material';
 // hooks
 import { useUserData } from '../../../hooks/useUserData';
 import useResponsive from '../../../hooks/useResponsive';
@@ -55,7 +55,6 @@ export default function Nav({ openNav, onCloseNav }) {
   if (!userData) {
     return <div>Error...</div>;
   }
-
   const renderContent = (
     <Scrollbar
       sx={{
@@ -67,8 +66,8 @@ export default function Nav({ openNav, onCloseNav }) {
         <Logo />
       </Box>
 
-      <Box sx={{ mb: 5, mx: 2.5 }}>
-        <Link underline="none">
+      <Box sx={{ mb: 5, mx: 2.5 }} class="hover-default">
+        <Link underline="none" >
           <StyledAccount>
             <Avatar src={account.photoURL} alt="photoURL" />
 
@@ -89,6 +88,23 @@ export default function Nav({ openNav, onCloseNav }) {
 
       <Box sx={{ flexGrow: 1 }} />
 
+      <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>
+        <Stack alignItems="center" spacing={3} sx={{ pt: 5, borderRadius: 2, position: 'relative' }}>
+          <Box sx={{ textAlign: 'center' }}>
+            <Typography gutterBottom variant="h6">
+              Ready to Work?
+            </Typography>
+
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              Get a Class on Your Schedule
+            </Typography>
+          </Box>
+
+          <Button href="https://irontribefitness.com" target="_blank" variant="contained">
+            Find a Class
+          </Button>
+        </Stack>
+      </Box>
     </Scrollbar>
   );
 

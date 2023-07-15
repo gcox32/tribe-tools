@@ -73,3 +73,9 @@
 .card:active {
   cursor: grabbing;
 }
+.hover-pointer:hover {
+  cursor: pointer;
+}
+.hover-default:hover {
+  cursor: default;
+}
