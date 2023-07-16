@@ -66,7 +66,7 @@ export default function Nav({ openNav, onCloseNav }) {
         <Logo />
       </Box>
 
-      <Box sx={{ mb: 5, mx: 2.5 }} class="hover-default">
+      <Box sx={{ mb: 5, mx: 2.5 }} className="hover-default">
         <Link underline="none" >
           <StyledAccount>
             <Avatar src={account.photoURL} alt="photoURL" />
@@ -100,7 +100,7 @@ export default function Nav({ openNav, onCloseNav }) {
             </Typography>
           </Box>
 
-          <Button href="https://irontribefitness.com" target="_blank" variant="contained">
+          <Button variant="contained">
             Find a Class
           </Button>
         </Stack>
