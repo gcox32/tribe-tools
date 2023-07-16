@@ -12,6 +12,7 @@ import DashboardAppPage from './pages/DashboardAppPage';
 import CalendarPage from './pages/CalendarPage';
 import ProfilePage from './pages/ProfilePage';
 import BillingPage from './pages/BillingPage';
+import OutputScorePage from './pages/OutputScorePage';
 
 // ----------------------------------------------------------------------
 
@@ -24,6 +25,7 @@ export default function Router() {
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'schedule', element: <CalendarPage /> },
         { path: 'app', element: <DashboardAppPage /> },
+        { path: 'output', element: <OutputScorePage />},
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
