@@ -39,8 +39,6 @@ import { store, persistor } from './redux/store'
 import { SettingsProvider } from './contexts/SettingsContext'
 import { CollapseDrawerProvider } from './contexts/CollapseDrawerContext'
 
-import { AuthProvider } from './contexts/JWTContext'
-
 //
 import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
@@ -51,23 +49,21 @@ import reportWebVitals from './reportWebVitals'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
-  <AuthProvider>
-    <HelmetProvider>
-      <ReduxProvider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <SettingsProvider>
-              <CollapseDrawerProvider>
-                <BrowserRouter>
-                  <App />
-                </BrowserRouter>
-              </CollapseDrawerProvider>
-            </SettingsProvider>
-          </LocalizationProvider>
-        </PersistGate>
-      </ReduxProvider>
-    </HelmetProvider>
-  </AuthProvider>
+  <HelmetProvider>
+    <ReduxProvider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <SettingsProvider>
+            <CollapseDrawerProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </CollapseDrawerProvider>
+          </SettingsProvider>
+        </LocalizationProvider>
+      </PersistGate>
+    </ReduxProvider>
+  </HelmetProvider>
 )
 
 // If you want your app to work offline and load faster, you can change

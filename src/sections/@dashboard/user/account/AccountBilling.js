@@ -44,14 +44,14 @@ export default function AccountBilling({ cards, addressBook, invoices }) {
             </Box>
           </Card>
 
-          {/* <AccountBillingPaymentMethod cards={cards} isOpen={open} onOpen={() => setOpen(!open)} onCancel={() => setOpen(false)} />
+          <AccountBillingPaymentMethod cards={cards} isOpen={open} onOpen={() => setOpen(!open)} onCancel={() => setOpen(false)} />
 
-          <AccountBillingAddressBook addressBook={addressBook} /> */}
+          <AccountBillingAddressBook addressBook={addressBook} />
         </Stack>
       </Grid>
 
       <Grid item xs={12} md={4}>
-        {/* <AccountBillingInvoiceHistory invoices={invoices} /> */}
+        <AccountBillingInvoiceHistory invoices={invoices} />
       </Grid>
     </Grid>
   )

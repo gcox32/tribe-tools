@@ -21,7 +21,6 @@ import { IconButtonAnimate } from '../../../components/animate'
 //
 import Searchbar from './Searchbar'
 import AccountPopover from './AccountPopover'
-import LanguagePopover from './LanguagePopover'
 
 // ----------------------------------------------------------------------
 

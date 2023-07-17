@@ -4,8 +4,6 @@ import { forwardRef } from 'react';
 import { Box, Tooltip, ListItemText, ListItemIcon } from '@mui/material';
 // hooks
 import useLocales from '../../../hooks/useLocales';
-// guards
-import RoleBasedGuard from '../../../guards/RoleBasedGuard';
 // config
 import { ICON } from '../../../config';
 //
@@ -76,7 +74,7 @@ const NavItem = forwardRef(({ item, depth, active, open, ...other }, ref) => {
     </ListItemStyle>
   );
 
-  return <RoleBasedGuard roles={roles}>{renderContent}</RoleBasedGuard>;
+  return <NavItem >{renderContent}</NavItem>;
 });
 
 export default NavItem;

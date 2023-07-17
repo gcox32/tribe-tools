@@ -44,6 +44,7 @@ export const fullAddress = [
 ];
 
 export const country = [
+  'United States',
   'Kenya',
   'Madagascar',
   'Netherlands Antilles',

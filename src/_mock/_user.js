@@ -6,19 +6,19 @@ import { randomNumberRange, randomInArray } from './funcs';
 export const _userAbout = {
   id: _mock.id(1),
   cover: _mock.image.cover(1),
-  position: 'UI Designer',
+  position: 'Web Developer',
   follower: randomNumberRange(999, 99999),
   following: randomNumberRange(999, 99999),
-  quote: 'Tart I love sugar plum I love oat cake. Sweet roll caramels I love jujubes. Topping cake wafer..',
+  quote: 'quote quote quote',
   country: _mock.address.country(1),
   email: _mock.email(1),
   company: _mock.company(1),
   school: _mock.company(2),
-  role: 'Manager',
-  facebookLink: `https://www.facebook.com/caitlyn.kerluke`,
-  instagramLink: `https://www.instagram.com/caitlyn.kerluke`,
-  linkedinLink: `https://www.linkedin.com/in/caitlyn.kerluke`,
-  twitterLink: `https://www.twitter.com/caitlyn.kerluke`,
+  role: 'Developer',
+  facebookLink: `https://www.facebook.com/`,
+  instagramLink: `https://www.instagram.com/`,
+  linkedinLink: `https://www.linkedin.com/in/`,
+  twitterLink: `https://www.twitter.com/`,
 };
 
 export const _userFollowers = [...Array(18)].map((_, index) => ({
@@ -48,7 +48,7 @@ export const _userFeeds = [...Array(3)].map((_, index) => ({
   author: {
     id: _mock.id(8),
     avatarUrl: _mock.image.avatar(1),
-    name: 'Caitlyn Kerluke',
+    name: 'Given Name',
   },
   isLiked: true,
   createdAt: _mock.time(index),

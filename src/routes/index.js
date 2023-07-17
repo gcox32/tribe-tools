@@ -3,10 +3,6 @@ import { Navigate, useRoutes, useLocation } from 'react-router-dom'
 
 import DashboardLayout from '../layouts/dashboard'
 import LogoOnlyLayout from '../layouts/LogoOnlyLayout'
-// guards
-import GuestGuard from '../guards/GuestGuard'
-import AuthGuard from '../guards/AuthGuard'
-// import RoleBasedGuard from '../guards/RoleBasedGuard';
 // config
 import { PATH_AFTER_LOGIN } from '../config'
 // components
@@ -27,44 +23,17 @@ const Loadable = (Component) => (props) => {
 
 export default function Router() {
   return useRoutes([
-    {
-      path: 'auth',
-      children: [
-        {
-          path: 'login',
-          element: (
-            <GuestGuard>
-              <Login />
-            </GuestGuard>
-          )
-        },
-        {
-          path: 'register',
-          element: (
-            <GuestGuard>
-              <Register />
-            </GuestGuard>
-          )
-        },
-        { path: 'login-unprotected', element: <Login /> },
-        { path: 'register-unprotected', element: <Register /> },
-        { path: 'reset-password', element: <ResetPassword /> },
-        { path: 'new-password', element: <NewPassword /> },
-        { path: 'verify', element: <VerifyCode /> }
-      ]
-    },
 
     // Dashboard Routes
     {
       path: 'dashboard',
       element: (
-        // <AuthGuard>
-          <DashboardLayout />
-        // </AuthGuard>
+        <DashboardLayout />
       ),
       children: [
         { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
         { path: 'app', element: <GeneralApp /> },
+        { path: 'schedule', element: <SchedulePage />},
         {
           path: 'user',
           children: [
@@ -84,7 +53,7 @@ export default function Router() {
         { path: '500', element: <Page500 /> },
         { path: '404', element: <Page404 /> },
         { path: '403', element: <Page403 /> },
-        { path: '*', element: <Navigate to="/404" replace /> }
+        { path: '', element: <Navigate to="/dashboard/app" replace /> }
       ]
     },
 
@@ -92,19 +61,14 @@ export default function Router() {
   ])
 }
 
-// AUTHENTICATION
-const Login = Loadable(lazy(() => import('../pages/auth/Login')))
-const Register = Loadable(lazy(() => import('../pages/auth/Register')))
-const ResetPassword = Loadable(lazy(() => import('../pages/auth/ResetPassword')))
-const NewPassword = Loadable(lazy(() => import('../pages/auth/NewPassword')))
-const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')))
-
 const UserProfile = Loadable(lazy(() => import('../pages/UserProfile')))
 const UserAccount = Loadable(lazy(() => import('../pages/UserAccount')))
 
-// GENERAL
+// DASHBOARD
 const GeneralApp = Loadable(lazy(() => import('../pages/DashboardAppPage')))
+const SchedulePage = Loadable(lazy(() => import('../pages/CalendarPage')))
 
+// ERROR HANDLING
 const Page500 = Loadable(lazy(() => import('../pages/Page500')))
 const Page403 = Loadable(lazy(() => import('../pages/Page403')))
 const Page404 = Loadable(lazy(() => import('../pages/Page404')))

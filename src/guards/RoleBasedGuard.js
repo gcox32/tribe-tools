@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import { m } from 'framer-motion';
 // @mui
 import { Container, Typography } from '@mui/material';
-// hooks
-import useAuth from '../hooks/useAuth';
 // components
 import { MotionContainer, varBounce } from '../components/animate';
 // assets
@@ -19,12 +17,10 @@ RoleBasedGuard.propTypes = {
 
 export default function RoleBasedGuard({ hasContent, roles, children }) {
   // Logic here to get current user role
-  const { user } = useAuth();
 
   // const currentRole = 'user';
-  const currentRole = user?.role; // admin;
 
-  if (typeof roles !== 'undefined' && !roles.includes(currentRole)) {
+  if (typeof roles !== 'undefined') {
     return hasContent ? (
       <Container component={MotionContainer} sx={{ textAlign: 'center' }}>
         <m.div variants={varBounce().in}>

@@ -160,7 +160,7 @@ export default function DashboardAppPage() {
             <AppOrderTimeline
               title="My Tribeline"
               list={[...Array(5)].map((_, index) => ({
-                id: faker.datatype.uuid(),
+                id: faker.string.uuid(),
                 title: [
                   'Bring-a-Friend Day',
                   'Graduated 101',

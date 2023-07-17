@@ -7,9 +7,8 @@ import { alpha } from '@mui/material/styles'
 import { Box, Divider, Typography, Stack, MenuItem } from '@mui/material'
 import { Authenticator } from '@aws-amplify/ui-react';
 // routes
-import { PATH_DASHBOARD, PATH_AUTH } from '../../../routes/paths'
+import { PATH_DASHBOARD } from '../../../routes/paths'
 // hooks
-import useAuth from '../../../hooks/useAuth'
 import useIsMountedRef from '../../../hooks/useIsMountedRef'
 // components
 import MyAvatar from '../../../components/MyAvatar'
@@ -41,8 +40,6 @@ AccountPopover.propTypes = {
 
 export default function AccountPopover({ user }) {
   const navigate = useNavigate()
-
-  const { logout } = useAuth()
 
   const isMountedRef = useIsMountedRef()
 
