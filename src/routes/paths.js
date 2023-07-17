@@ -22,6 +22,9 @@ export const PATH_DASHBOARD = {
   schedule: {
     app: path(ROOTS_DASHBOARD, '/schedule')
   },
+  output: {
+    app: path(ROOTS_DASHBOARD, '/output')
+  },
 
   permissionDenied: path(ROOTS_DASHBOARD, '/permission-denied'),
   user: {

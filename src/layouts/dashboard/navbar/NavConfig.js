@@ -32,6 +32,7 @@ const navConfig = [
     items: [
       { title: 'dashboard', path: PATH_DASHBOARD.general.app, icon: ICONS.dashboard },
       { title: 'schedule', path: PATH_DASHBOARD.schedule.app, icon: ICONS.calendar },
+      { title: 'output score', path: PATH_DASHBOARD.output.app, icon: ICONS.analytics},
     ]
   }
 

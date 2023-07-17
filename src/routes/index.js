@@ -34,6 +34,7 @@ export default function Router() {
         { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
         { path: 'app', element: <GeneralApp /> },
         { path: 'schedule', element: <SchedulePage />},
+        { path: 'output', element: <OutputScorePage />},
         {
           path: 'user',
           children: [
@@ -67,6 +68,7 @@ const UserAccount = Loadable(lazy(() => import('../pages/UserAccount')))
 // DASHBOARD
 const GeneralApp = Loadable(lazy(() => import('../pages/DashboardAppPage')))
 const SchedulePage = Loadable(lazy(() => import('../pages/CalendarPage')))
+const OutputScorePage = Loadable(lazy(() => import('../pages/OutputScorePage')))
 
 // ERROR HANDLING
 const Page500 = Loadable(lazy(() => import('../pages/Page500')))
