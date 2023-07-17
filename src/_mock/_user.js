@@ -100,7 +100,7 @@ export const _userPayment = [...Array(2)].map((_, index) => ({
   cardType: ['master_card', 'visa', 'master_card'][index],
 }));
 
-export const _userAddressBook = [...Array(4)].map((_, index) => ({
+export const _userAddressBook = [...Array(1)].map((_, index) => ({
   id: _mock.id(index),
   name: _mock.name.fullName(index),
   phone: _mock.phoneNumber(index),

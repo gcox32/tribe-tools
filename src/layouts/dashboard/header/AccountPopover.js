@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
-import { useSnackbar } from 'notistack'
 import { useState } from 'react'
-import { Link as RouterLink, useNavigate } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 // @mui
 import { alpha } from '@mui/material/styles'
 import { Box, Divider, Typography, Stack, MenuItem } from '@mui/material'
@@ -9,7 +8,7 @@ import { Authenticator } from '@aws-amplify/ui-react';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths'
 // hooks
-import useIsMountedRef from '../../../hooks/useIsMountedRef'
+import { useUserData } from '../../../hooks/useUserData'
 // components
 import MyAvatar from '../../../components/MyAvatar'
 import MenuPopover from '../../../components/MenuPopover'
@@ -38,37 +37,21 @@ AccountPopover.propTypes = {
   userName: PropTypes.object
 }
 
-export default function AccountPopover({ user }) {
-  const navigate = useNavigate()
-
-  const isMountedRef = useIsMountedRef()
-
-  const { enqueueSnackbar } = useSnackbar()
+export default function AccountPopover() {
 
   const [open, setOpen] = useState(null)
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget)
   }
-
   const handleClose = () => {
     setOpen(null)
   }
 
-  const handleLogout = async () => {
-    try {
-      await logout()
-      navigate(PATH_AUTH.login, { replace: true })
-
-      if (isMountedRef.current) {
-        handleClose()
-      }
-    } catch (error) {
-      console.error(error)
-      enqueueSnackbar('Unable to logout!', { variant: 'error' })
-    }
+  const user = useUserData();
+  if (!user) {
+    return <div>Loading...</div>;
   }
-
   return (
     <>
       <IconButtonAnimate
@@ -107,10 +90,10 @@ export default function AccountPopover({ user }) {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle2" noWrap>
-            {user?.name}
+            {user.given_name} {user.family_name}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {user?.email}
+            {user.email}
           </Typography>
         </Box>
 
@@ -127,7 +110,7 @@ export default function AccountPopover({ user }) {
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Authenticator >
-          {({signOut }) => (
+          {({ signOut }) => (
             <MenuItem onClick={signOut} sx={{ m: 1 }}>
               Logout
             </MenuItem>

@@ -4,9 +4,12 @@ import { useCallback } from 'react';
 // form
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+
 // @mui
 import { Box, Grid, Card, Stack, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+// hooks
+import { useUserData } from '../../../../hooks/useUserData';
 // utils
 import { fData } from '../../../../utils/formatNumber';
 // _mock
@@ -23,8 +26,17 @@ export default function AccountGeneral() {
     displayName: Yup.string().required('Name is required'),
   });
 
+  const onSubmit = async () => {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      enqueueSnackbar('Update success!');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const defaultValues = {
-    displayName: 'given_name' || '',
+    displayName: 'display name' || '',
     email: 'given_name' || '',
     photoURL: 'given_name' || '',
     phoneNumber: 'given_name' || '',
@@ -48,15 +60,6 @@ export default function AccountGeneral() {
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = async () => {
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      enqueueSnackbar('Update success!');
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const handleDrop = useCallback(
     (acceptedFiles) => {
       const file = acceptedFiles[0];
@@ -72,6 +75,11 @@ export default function AccountGeneral() {
     },
     [setValue]
   );
+
+  const user = useUserData();
+  if (!user) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>

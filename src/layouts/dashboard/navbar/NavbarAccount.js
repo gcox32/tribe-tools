@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { Link as RouterLink } from 'react-router-dom'
-// Redux
-import { useSelector } from 'react-redux'
+// hooks
+import { useUserData } from '../../../hooks/useUserData'
 // @mui
 import { styled } from '@mui/material/styles'
 import { Box, Link, Typography } from '@mui/material'
@@ -31,8 +31,11 @@ NavbarAccount.propTypes = {
 }
 
 export default function NavbarAccount({ isCollapse }) {
-  // get user
-  const { user } = useSelector((state) => state?.user)
+
+  const user = useUserData();
+  if (!user) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Link underline="none" color="inherit" component={RouterLink} to={PATH_DASHBOARD.user.account}>
@@ -59,10 +62,10 @@ export default function NavbarAccount({ isCollapse }) {
           }}
         >
           <Typography variant="subtitle2" noWrap>
-            {user?.name}
+            {user.given_name} {user.family_name}
           </Typography>
           <Typography variant="body2" noWrap sx={{ color: 'text.secondary' }}>
-            {user?.role}
+            {user.email}
           </Typography>
         </Box>
       </RootStyle>
