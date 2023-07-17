@@ -6,7 +6,7 @@ export function Header() {
   return (
     <Image
       alt="logo"
-      src="/assets/images/itf-header.png"
+      src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
       padding={tokens.space.medium}
     />
   );
